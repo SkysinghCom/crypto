@@ -15,6 +15,10 @@ TWITTER_API_SECRET = os.getenv("TWITTER_API_SECRET")
 TWITTER_ACCESS_TOKEN = os.getenv("TWITTER_ACCESS_TOKEN")
 TWITTER_ACCESS_SECRET = os.getenv("TWITTER_ACCESS_SECRET")
 
+# ❌ Add this check and client setup here:
+if not all([TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET]):
+    raise ValueError("Twitter API keys are missing. Check Railway variables.")
+    
 # Setup Twitter client
 auth = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_SECRET)
 auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET)
